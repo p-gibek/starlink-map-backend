@@ -1,0 +1,5 @@
+*.js
+.serverless
+
+# Project exclude paths
+/node_modules/
