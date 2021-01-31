@@ -24,14 +24,26 @@ provider:
   apiGateway:
     shouldStartNameWithService: true
 
+package:
+  exclude:
+    - .idea/**
+    - src/**
+    - .prettierrc.json
+    - tsconfig.json
+    - tslint.json
+    - "**/*.ts"
+    - "**/*.md"
+
 functions:
-  list:
-    handler: satellites/get-satcat-data.GetSATCATDataHandler
+  list-satellites:
+    handler: dist/satellites/list-satellites.ListSatellitesHandler
     events:
       - http:
           path: satellites
           method: get
           cors: true
+  fetch-satcat-data:
+    handler: dist/satellites/fetch-satcat-data.FetchSATCATData
 
 resources:
   Resources:
