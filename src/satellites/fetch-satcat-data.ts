@@ -39,6 +39,7 @@ const getSatellitesData = async (): Promise<SatelliteData[]> => {
     epoch: sat.EPOCH,
     tle1: sat.TLE_LINE1,
     tle2: sat.TLE_LINE2,
+    updatedAt: new Date().toISOString(),
   }));
 };
 
