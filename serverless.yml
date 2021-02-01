@@ -48,6 +48,8 @@ functions:
   fetch-satcat-data:
     handler: dist/satellites/fetch-satcat-data.FetchSATCATData
     timeout: 120
+    events:
+      - schedule: rate(1 hour)
 
 resources:
   Resources:
@@ -64,6 +66,6 @@ resources:
             AttributeName: noradCatID
             KeyType: HASH
         ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+          ReadCapacityUnits: 25
+          WriteCapacityUnits: 25
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
