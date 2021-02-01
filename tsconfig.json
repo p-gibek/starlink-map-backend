@@ -4,7 +4,8 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules"

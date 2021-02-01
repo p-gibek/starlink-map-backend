@@ -5,10 +5,12 @@ frameworkVersion: ">=2.21.1"
 provider:
   name: aws
   runtime: nodejs12.x
-  memorySize: 256
+  memorySize: 128
   region: eu-west-1
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    SPACE_TRACK_USERNAME: ""
+    SPACE_TRACK_PASSWORD: ""
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -44,20 +46,22 @@ functions:
           cors: true
   fetch-satcat-data:
     handler: dist/satellites/fetch-satcat-data.FetchSATCATData
+    memorySize: 256
+    timeout: 120
 
 resources:
   Resources:
-    TodosDynamoDbTable:
+    SatellitesDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: id
+            AttributeName: noradCatID
             AttributeType: S
         KeySchema:
           -
-            AttributeName: id
+            AttributeName: noradCatID
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
