@@ -4,7 +4,13 @@ import { APIGatewayEvent, APIGatewayProxyResultV2, Handler } from 'aws-lambda';
 const dynamoDb = new DynamoDB.DocumentClient();
 
 const ListSatellitesHandler: Handler<APIGatewayEvent, APIGatewayProxyResultV2> = async (event, context) => {
-  return { statusCode: 200, body: JSON.stringify({ x: 'd' }) };
+  const satellitesData = await dynamoDb
+    .scan({
+      TableName: process.env.DYNAMODB_TABLE,
+    })
+    .promise();
+
+  return { statusCode: 200, body: JSON.stringify(satellitesData?.Items) };
 };
 
 module.exports.ListSatellitesHandler = ListSatellitesHandler;
