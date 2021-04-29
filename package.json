@@ -5,7 +5,7 @@
   "scripts": {
     "watch": "tsc -w",
     "lint": "tslint '*.ts'",
-    "deploy": "tsc && serverless deploy --stage dev",
+    "deploy-dev": "tsc && serverless deploy --stage dev",
     "deploy-prod": "tsc && serverless deploy --stage production"
   },
   "keywords": [],
