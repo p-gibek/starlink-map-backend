@@ -10,7 +10,13 @@ const ListSatellitesHandler: Handler<APIGatewayEvent, APIGatewayProxyResultV2> =
     })
     .promise();
 
-  return { statusCode: 200, body: JSON.stringify(satellitesData?.Items) };
+  return {
+    statusCode: 200,
+    body: JSON.stringify(satellitesData?.Items),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
 };
 
 module.exports.ListSatellitesHandler = ListSatellitesHandler;
