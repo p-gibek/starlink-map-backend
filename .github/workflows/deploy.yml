@@ -25,7 +25,7 @@ jobs:
         run: npm run deploy-prod
       - name: Serverless deploy to development environment
         if: ${{ github.ref == 'refs/heads/develop' }}
-        run: npm run deploy
+        run: npm run deploy-dev
         env:
            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
