@@ -8,7 +8,7 @@ provider:
   memorySize: 512
   region: eu-west-1
   environment:
-    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    DYNAMODB_TABLE: ${self:service}-test
     SPACE_TRACK_USERNAME: ${env:SPACE_TRACK_USERNAME}
     SPACE_TRACK_PASSWORD: ${env:SPACE_TRACK_PASSWORD}
     DEV_DOMAIN_NAME: 'api.dev.starlinkmap.space'
